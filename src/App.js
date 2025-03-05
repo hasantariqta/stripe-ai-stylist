@@ -1,20 +1,25 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AppProvider } from './contexts/AppContext';
-import Home from './pages/Home';
-import StylistConsole from './pages/StylistConsole';
-import './index.css';
+import { AuthProvider } from './contexts/AuthContext';
+//import Layout from './components/layout/Layout';
+import IntroStep from './components/steps/IntroStep';
+import StylistStep from './components/steps/StylistStep';
+// Import other components as needed
 
 function App() {
   return (
-    <AppProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/stylist" element={<StylistConsole />} />
-        </Routes>
-      </Router>
-    </AppProvider>
+    <AuthProvider>
+      <AppProvider>
+        <Router>
+            <Routes>
+              <Route path="/" element={<IntroStep />} />
+              <Route path="/stylist" element={<StylistStep />} />
+              {/* Add other routes as needed */}
+            </Routes>
+        </Router>
+      </AppProvider>
+    </AuthProvider>
   );
 }
 
