@@ -287,12 +287,15 @@ const StylistStep = () => {
       console.log('Calling API with prompt:', prompt);
       console.log('Using auth token:', authToken ? 'Token exists' : 'No token');
       
-      const response = await fetch('https://85jzer05hj.execute-api.us-east-1.amazonaws.com/prod/outfits', {
+      const response = await fetch('https://85jzer05hj.execute-api.us-east-1.amazonaws.com/prod/stylist', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': authToken
-        },
+            'Content-Type': 'application/json',
+            'Authorization': authToken,
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': 'Content-Type,Authorization',
+            'Access-Control-Allow-Methods': 'POST,OPTIONS,GET'
+          },
         body: JSON.stringify({ prompt })
       });
       
